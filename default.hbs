@@ -40,7 +40,13 @@
             </div>
 
             <nav class="gh-head-menu">
-                {{navigation}}
+                {{#is "home"}}
+                    <div class="nav-background">
+                {{/is}}
+                    {{navigation}}
+                {{#is "home"}}
+                    </div>
+                {{/is}}
                 {{#unless @site.members_enabled}}
                     {{#match @custom.navigation_layout "Stacked"}}
                         <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
@@ -49,25 +55,31 @@
             </nav>
 
             <div class="gh-head-actions">
-                {{#unless @site.members_enabled}}
-                    {{^match @custom.navigation_layout "Stacked"}}
+                {{#is "home"}}
+                    <div class="nav-background">
+                {{/is}}
+                    {{#unless @site.members_enabled}}
+                        {{^match @custom.navigation_layout "Stacked"}}
+                            <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
+                        {{/match}}
+                    {{else}}
                         <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
-                    {{/match}}
-                {{else}}
-                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
-                    <div class="gh-head-members">
-                        {{#unless @member}}
-                            {{#unless @site.members_invite_only}}
-                                <a class="gh-head-link" href="#/portal/signin" data-portal="signin">Sign in</a>
-                                <a class="gh-head-button" href="#/portal/signup" data-portal="signup">Subscribe</a>
+                        <div class="gh-head-members">
+                            {{#unless @member}}
+                                {{#unless @site.members_invite_only}}
+                                    <a class="gh-head-link" href="#/portal/signin" data-portal="signin">Sign in</a>
+                                    <a class="gh-head-button" href="#/portal/signup" data-portal="signup">Subscribe</a>
+                                {{else}}
+                                    <a class="gh-head-button" href="#/portal/signin" data-portal="signin">Sign in</a>
+                                {{/unless}}
                             {{else}}
-                                <a class="gh-head-button" href="#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-button" href="#/portal/account" data-portal="account">Account</a>
                             {{/unless}}
-                        {{else}}
-                            <a class="gh-head-button" href="#/portal/account" data-portal="account">Account</a>
-                        {{/unless}}
+                        </div>
+                    {{/unless}}
+                {{#is "home"}}
                     </div>
-                {{/unless}}
+                {{/is}}
             </div>
         </div>
     </header>
