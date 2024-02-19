@@ -21,7 +21,7 @@ into the {body} of the default.hbs template --}}
     {{/if}}
 
     {{#match @custom.header_style "!=" "Hidden"}}
-        <div class="site-header-inner inner">
+        <div class="site-header-inner inner title-background">
             {{#match @custom.navigation_layout "Logo on cover"}}
                 {{#if @site.logo}}
                     <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}">

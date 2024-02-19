@@ -3034,3 +3034,8 @@ file to add some of your own styles. Well, you've come to
 the right place. Onward!
 
  */
+ .title-background {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px; 
+    border-radius: 8px;
+}
